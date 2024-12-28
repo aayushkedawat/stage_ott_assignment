@@ -83,8 +83,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       final currentState = state;
 
       // Remove movie from the database
-      // await appDatabase.movieDao
-      //     .deleteMovieFromLocal(MovieItemModel.fromEntity(event.movie));
       await _removeMovieUseCase.execute(params: event.movie);
 
       if (currentState is MovieLoaded) {
